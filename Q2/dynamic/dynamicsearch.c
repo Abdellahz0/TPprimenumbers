@@ -183,7 +183,7 @@ int main() {
     temp=next(temp);
   }
 
-  
+  //still only Q5
   
   free_list(head);
   return 0;
