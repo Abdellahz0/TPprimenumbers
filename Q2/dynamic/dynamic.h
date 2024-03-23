@@ -1,4 +1,3 @@
-//Q4
 
 //inner list
 
@@ -20,8 +19,6 @@ typedef struct cell { //list struct defining
 
 void allocate_cell(cell** p);
 
-void free_list(cell* head);
-
 int value(cell* p);
 
 bool prime(cell* p);
@@ -33,6 +30,8 @@ void ass_val(cell*p,int v);
 void ass_prime(cell* p,bool v);
 
 void ass_adr(cell* p,cell* q);
+
+void free_list(cell* head);
 
 void create_prime_list(int size,cell** head);
 

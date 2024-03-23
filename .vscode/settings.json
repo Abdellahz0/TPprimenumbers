@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "dynamic.h": "c",
+        "stdbool.h": "c"
+    }
+}

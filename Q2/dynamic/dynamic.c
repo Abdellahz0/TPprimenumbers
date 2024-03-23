@@ -10,13 +10,6 @@ void allocate_cell(cell** p) { //allocate a cell
   *p=(cell*)malloc(sizeof(cell));
 }
 
-void free_list(cell* head) { //free all the cells of the list
-  while (head != NULL) {
-    cell* p = head;
-    head = next(head);
-    free(p);
-  }
-}
 
 int value(cell* p) { //give the value of a cell
   return p->value;
@@ -40,6 +33,14 @@ void ass_prime(cell* p,bool v) {
 
 void ass_adr(cell* p,cell* q) { //assigne a next value to the cell
   p->next=q;
+}
+
+void free_list(cell* head) { //free all the cells of the list
+  while (head != NULL) {
+    cell* p = head;
+    head = next(head);
+    free(p);
+  }
 }
 
 void create_prime_list(int size,cell** head) { //create a list with size cell
