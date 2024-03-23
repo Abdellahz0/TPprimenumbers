@@ -21,20 +21,18 @@ int main() {
   printprime_list(head);
 
   //Q3
-
-  index_list(head); 
+  int range,max_ran;
+  max_ran=index_list(head,&range); 
   display_all_ranges(head);
-  perror("error one");
-  display_by_range(head);
-  perror("error two");
+  display_by_range(head,range,max_ran);
 
   //Q4
 
-  createprime_prod(head);
-  print_primeprod(head);
+  // createprime_prod(head);
+  // print_primeprod(head);
   
   //Q5
-  find_coprime(head);
+  // find_coprime(head);
    
 
   free_innerlists(head);
