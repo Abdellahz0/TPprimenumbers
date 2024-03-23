@@ -54,4 +54,23 @@ void print_range(cell* head){
    {
       printf("range is : %d  %d \n",value(temp),value(nextind(temp)));
       temp=nextind(temp);
-   }}
+   }
+   }
+
+
+
+   void display(cell* head){                     // display by range ex: first range or third ext.
+      cell* temp=head;
+      int pos;
+      printf("which range you want to print : ");
+      scanf("%d",&pos);
+      for (int i = 0; i < pos-1; i++)
+      {
+        temp=nextind(temp);
+      }
+      printf("The numbers of the range number %d",pos);       // I made it so fast so we have to test it later
+      while(temp!=NULL && temp!=nextind(temp)){
+         printf("%4d |",value(temp));
+         temp=next(temp);
+      }
+   }
