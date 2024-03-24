@@ -142,26 +142,26 @@ void main_menu() {
             {
                 if (i == choise)
                 {
-                    printf("# --> "); 
+                    printf("#\033[34m --> "); 
                 } else {
-                    printf("#     "); 
+                    printf("\033[0m#     "); 
                 }
                 switch (i)
                 {
                   case 1:
-                      printf("Q1) Search primes without using any structures%67c#\n",32);
+                      printf("Q1) Search primes without using any structures%67c\033[0m#\n",32);
                       break;
                   case 2:
-                      printf("Q2) Search primes using the two data structures%66c#\n",32);
+                      printf("Q2) Search primes using the two data structures%66c\033[0m#\n",32);
                       break;
                   case 3:
-                      printf("Q3) Index the list%95c#\n",32);
+                      printf("Q3) Index the list%95c\033[0m#\n",32);
                       break;
                   case 4:
-                      printf("Q4) Express each number as a prime product%71c#\n",32);
+                      printf("Q4) Express each number as a prime product%71c\033[0m#\n",32);
                       break;
                   case 5:
-                      printf("Q5) Find all co-prime numbers%84c#\n",32);
+                      printf("Q5) Find all co-prime numbers%84c\033[0m#\n",32);
                       break;
                 }
             }
