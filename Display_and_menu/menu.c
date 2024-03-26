@@ -335,7 +335,7 @@ void sub_menu_1(cell** head,bool* decision) {
             {
                 if (i == choice)
                 {
-                    printf("\033[34m# --> ");
+                    printf("#\033[34m --> ");
                 } else {
                     printf("#     "); 
                 }
@@ -369,7 +369,6 @@ void sub_menu_1(cell** head,bool* decision) {
             printf("#%36c\033[31mHow to navigate throught the menu\033[0m%49c#\n",32,32);
             printf("#%26c\033[31mUse the Up and Down arrows or the numbers from 1 to %d\033[0m%39c#\n",32,max_choice,32);
             printf("#%26c\033[31mPress enter to choose the option after selecting it\033[0m%41c#\n",32,32);
-            printf("#%36c\033[31mTo quite the program press 'Esc'\033[0m%50c#\n",32,32);
             printf("#%118c#\n",32);
             printf("########################################################################################################################\n");
 
