@@ -120,7 +120,8 @@ void loading_page() {
 
 cell* main_menu() {
     cell* head=NULL; //the head of the list 
-
+    bool decision=false; //for menu logic 
+    //Q3,Q4,Q5 must not be executed unless Q2 is executed
     int choice = 1;            //the option choosed (set default to one)
     int choice2=1;
     int max_choice = 5;        //the total number of options
@@ -254,28 +255,43 @@ cell* main_menu() {
               sub_menu_1(&head);
               break;
           case 3:
-              max_ran=index_list(head,&range); 
-              display_all_ranges(head);
-              display_by_range(head,range,max_ran);
-              printf("Press enter to continue :");
-              getch();
-              system("Cls");
-
+              if (decision)
+              {
+                max_ran=index_list(head,&range); 
+                display_all_ranges(head);
+                display_by_range(head,range,max_ran);
+                printf("Press enter to continue :");
+                getch();
+                system("Cls");
+              }
+             else{
+                printf("You have to create the linked list first in question 2 dynamic implementation\n");
+             }
               break;
           case 4:
-              createprime_prod(head);
-              print_primeprod(head);
-              printf("Press enter to continue :");
-              getch();
-              system("Cls");
-
+              if (decision)
+              {
+               createprime_prod(head);
+               print_primeprod(head);
+               printf("Press enter to continue :");
+               getch();
+               system("Cls");
+              }
+             else{
+                printf("You have to create the linked list first in question 2 dynamic implementation\n");
+             }
               break;
           case 5:
-              find_coprime(head);
-              printf("Press enter to continue :");
-              getch();
-              system("Cls");
-
+                if (decision)
+              {
+                find_coprime(head);
+                printf("Press enter to continue :");
+                getch();
+                system("Cls");
+              }
+             else{
+                printf("You have to create the linked list first in question 2 dynamic implementation\n");
+             }
               break;
         }
     } while(choice != 6);
