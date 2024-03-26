@@ -1,5 +1,7 @@
 to do :
-  1- Q6
-  2- menu_display
-  3- sub_menus
-  4- menu logic
+  1- Q6 //now
+  2- menu_display //for anes at home 
+  3- sub_menus & other new modules
+      . prime prod display by number using indxed list
+      . 
+  4- add comments //at home
