@@ -324,11 +324,11 @@ void sub_menu_1(cell** head,bool* decision) {
 
             printf("########################################################################################################################\n");
             printf("#%118c#\n",32);
-            printf("Q2) Search primes using the two data structures%66c\033[0m#\n",32);
+            printf("#%30cQ2) Search primes using the two data structures%41c\033[0m#\n",32,32);
             printf("#%118c#\n",32);
             printf("########################################################################################################################\n");
             printf("#%118c#\n",32);
-            printf("#%47cchoose an option:%47c#\n",32,32);
+            printf("#%47cchoose an option:%54c#\n",32,32);
             printf("#%118c#\n",32);
             int i ;
             for (i = 1; i <= max_choice; i++)
@@ -342,13 +342,13 @@ void sub_menu_1(cell** head,bool* decision) {
                 switch (i)
                 {
                 case 1:
-                    printf("1) Static implementation%93c\033[0m#\n",32);
+                    printf("1) Static implementation%89c\033[0m#\n",32);
                     break;
                 case 2:
-                    printf("2) Dynamic implementation (Linked list)%78c\033[0m#\n",32);
+                    printf("2) Dynamic implementation (Linked list)%74c\033[0m#\n",32);
                     break;
                 case 3:
-                    printf("3) Return to main menu%83c\033[0m#\n",32);
+                    printf("3) Return to main menu%91c\033[0m#\n",32);
                     break;
                 }
             }
