@@ -1,6 +1,5 @@
 to do :
   1- Q6
-  2- fix index list
-  3- add comments //at home
+  2- add comments //at home
      .abdellah Q3 Q2 Q1         and  prime prod display by number using indxed list
      .anes Q4 Q5 menu
