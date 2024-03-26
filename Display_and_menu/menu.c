@@ -149,7 +149,11 @@ cell* main_menu() {
             {
                 if (i == choice)
                 {
-                    printf("#\033[34m --> "); 
+                    if (choice<=2 || (choice>2 && decision)) {
+                       printf("#\033[34m --> ");
+                    } else {
+                        printf("#\033[31m --> ");
+                    }
                 } else {
                     printf("\033[0m#     "); 
                 }
@@ -252,7 +256,7 @@ cell* main_menu() {
               system("Cls");
               break;
           case 2:
-              sub_menu_1(&head);
+              sub_menu_1(&head,&decision);
               break;
           case 3:
               if (decision)
@@ -260,38 +264,38 @@ cell* main_menu() {
                 max_ran=index_list(head,&range); 
                 display_all_ranges(head);
                 display_by_range(head,range,max_ran);
-                printf("Press enter to continue :");
-                getch();
-                system("Cls");
               }
-             else{
+              else{
                 printf("You have to create the linked list first in question 2 dynamic implementation\n");
-             }
+              }
+              printf("Press enter to continue :");
+              getch();
+              system("Cls");
               break;
           case 4:
               if (decision)
               {
                createprime_prod(head);
                print_primeprod(head);
-               printf("Press enter to continue :");
-               getch();
-               system("Cls");
               }
              else{
                 printf("You have to create the linked list first in question 2 dynamic implementation\n");
-             }
+              }
+              printf("Press enter to continue :");
+              getch();
+              system("Cls");
               break;
           case 5:
                 if (decision)
               {
                 find_coprime(head);
-                printf("Press enter to continue :");
-                getch();
-                system("Cls");
               }
              else{
                 printf("You have to create the linked list first in question 2 dynamic implementation\n");
              }
+             printf("Press enter to continue :");
+             getch();
+             system("Cls");
               break;
         }
     } while(choice != 6);
@@ -305,7 +309,7 @@ cell* main_menu() {
     return head;
 }
 
-void sub_menu_1(cell** head) {
+void sub_menu_1(cell** head,bool* decision) {
 
     int choice = 1;                             
     int max_choice = 3;                       
@@ -435,6 +439,7 @@ void sub_menu_1(cell** head) {
             create_prime_list(size-1,&(*head));
             check_prime(*head);
             printprime_list(*head);
+            *decision=true;
             printf("Press enter to continue :");
             getch();
             system("Cls");
