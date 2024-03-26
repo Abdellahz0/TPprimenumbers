@@ -255,7 +255,7 @@ cell* main_menu() {
 
               printf("enter the upper bound : ");
               scanf("%d",&array_size);
-              prime* Array;
+              primes* Array;
               createprime_array(&Array,array_size);
               check_primes(Array,array_size);
               print_prime(Array,array_size);

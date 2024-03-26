@@ -1,16 +1,16 @@
 
 
 // Array of prime structure
-typedef struct prime {
+typedef struct primes {
   int n;
   bool pr;
-}prime;
+}primes;
 
 
 bool is_prime(int x);
 
-void createprime_array(prime **Tab,int size1);
+void createprime_array(primes **Tab,int size1);
 
-void check_primes(prime* Tab, int size1);
+void check_primes(primes* Tab, int size1);
 
-void print_prime(prime* Tab,int size1);
+void print_prime(primes* Tab,int size1);
