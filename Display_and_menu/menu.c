@@ -120,8 +120,10 @@ void loading_page() {
 
 cell* main_menu() {
     cell* head=NULL; //the head of the list 
-    bool decision=false; //for menu logic 
-    //Q3,Q4,Q5 must not be executed unless Q2 is executed
+    bool decision=false; //for menu logic Q2
+    //Q3,Q4 must not be executed unless Q2 is executed
+    bool decision1=false; //for menu logic Q5 
+    //Q5 must not be executed unless Q2 and Q4 are executed
     int choice = 1;            //the option choosed (set default to one)
     int choice2=1;
     int max_choice = 5;        //the total number of options
@@ -149,7 +151,7 @@ cell* main_menu() {
             {
                 if (i == choice)
                 {
-                    if (choice<=2 || (choice>2 && decision)) {
+                    if (choice<=2 || ((choice==3 || choice==4) && decision) || (choice==5 && decision1)) {
                        printf("#\033[34m --> ");
                     } else {
                         printf("#\033[31m --> ");
@@ -243,6 +245,7 @@ cell* main_menu() {
         // execute the user's choice
         system("Cls");
         int n; //the upper bound for Q1
+        int size; //the upper bound for Q2 dynamic
         int range,max_ran; //to index the list
         
         switch (choice)
@@ -251,51 +254,55 @@ cell* main_menu() {
               printf("enter the upper bound : ");
               scanf("%d",&n);
               display_prime(n);
-              printf("Press enter to continue :");
+              printf("Press enter to continue");
               getch();
               system("Cls");
               break;
           case 2:
-              sub_menu_1(&head,&decision);
+              size=sub_menu_1(&head,&decision);
               break;
           case 3:
               if (decision)
               {
-                max_ran=index_list(head,&range); 
-                display_all_ranges(head);
-                display_by_range(head,range,max_ran);
+                max_ran=index_list(head,&range);
+                sub_menu_2(head,range,max_ran);
               }
               else{
                 printf("You have to create the linked list first in question 2 dynamic implementation\n");
+                printf("Press enter to continue");
+                getch();
+                system("Cls");
               }
-              printf("Press enter to continue :");
-              getch();
-              system("Cls");
               break;
           case 4:
               if (decision)
               {
                createprime_prod(head);
-               print_primeprod(head);
+               decision1=true;
+               sub_menu_3(head);
               }
              else{
                 printf("You have to create the linked list first in question 2 dynamic implementation\n");
+                printf("Press enter to continue");
+                getch();
+                system("Cls");
               }
-              printf("Press enter to continue :");
-              getch();
-              system("Cls");
               break;
           case 5:
-                if (decision)
+                if (decision && decision1)
               {
-                find_coprime(head);
+                sub_menu_4(head,size);
               }
-             else{
-                printf("You have to create the linked list first in question 2 dynamic implementation\n");
+             else {
+                if(!decision){
+                  printf("You have to create the linked list first in question 2 dynamic implementation\n then create the prime product sub-list in question 4\n");
+               } else {
+                  printf("You have to create the prime product sub-list in question 4\n");
+               }
+               printf("Press enter to continue");
+               getch();
+               system("Cls");
              }
-             printf("Press enter to continue :");
-             getch();
-             system("Cls");
               break;
         }
     } while(choice != 6);
@@ -309,11 +316,14 @@ cell* main_menu() {
     return head;
 }
 
-void sub_menu_1(cell** head,bool* decision) {
+int sub_menu_1(cell** head,bool* decision) {
 
     int choice = 1;                             
     int max_choice = 3;                       
     char c;   
+
+    int array_size; //the upper bound for the array
+    int size; //the upper bound for the list
 
     do {
         
@@ -415,8 +425,6 @@ void sub_menu_1(cell** head,bool* decision) {
         }while (c != 13); 
 
         system("cls");
-        int array_size; //the upper bound for the array
-        int size; //the upper bound for the list
         
         switch  (choice)
         {
@@ -428,7 +436,7 @@ void sub_menu_1(cell** head,bool* decision) {
             check_primes(Array,array_size);
             print_prime(Array,array_size);
             free(Array);
-            printf("Press enter to continue :");
+            printf("Press enter to continue");
             getch();
             system("Cls");
             break;
@@ -439,7 +447,384 @@ void sub_menu_1(cell** head,bool* decision) {
             check_prime(*head);
             printprime_list(*head);
             *decision=true;
-            printf("Press enter to continue :");
+            printf("Press enter to continue");
+            getch();
+            system("Cls");
+            break;
+        }
+    }while (choice != 3);
+
+    return size;
+}
+
+void sub_menu_2(cell* head,int range,int max_ran) {
+
+    int choice = 1;                             
+    int max_choice = 3;                       
+    char c;   
+
+    do {
+        
+        do
+        {
+
+            system("cls");
+
+            printf("########################################################################################################################\n");
+            printf("#%118c#\n",32);
+            printf("#%47cQ3) Index the list%53c\033[0m#\n",32,32);
+            printf("#%118c#\n",32);
+            printf("########################################################################################################################\n");
+            printf("#%118c#\n",32);
+            printf("#%47cchoose an option:%54c#\n",32,32);
+            printf("#%118c#\n",32);
+            int i ;
+            for (i = 1; i <= max_choice; i++)
+            {
+                if (i == choice)
+                {
+                    printf("#\033[34m --> ");
+                } else {
+                    printf("#     "); 
+                }
+                switch (i)
+                {
+                case 1:
+                    printf("1) Display all ranges%92c\033[0m#\n",32);
+                    break;
+                case 2:
+                    printf("2) Display a chosen range%88c\033[0m#\n",32);
+                    break;
+                case 3:
+                    printf("3) Return to main menu%91c\033[0m#\n",32);
+                    break;
+                }
+            }
+
+            // La suite de l'affichage
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("########################################################################################################################\n");
+            printf("#%118c#\n",32);
+            printf("#%36c\033[31mHow to navigate throught the menu\033[0m%49c#\n",32,32);
+            printf("#%26c\033[31mUse the Up and Down arrows or the numbers from 1 to %d\033[0m%39c#\n",32,max_choice,32);
+            printf("#%26c\033[31mPress enter to choose the option after selecting it\033[0m%41c#\n",32,32);
+            printf("#%118c#\n",32);
+            printf("########################################################################################################################\n");
+
+            
+ Read1 :   c = getch();
+
+            
+            switch (c)
+            {
+            case 72: 
+                if  (choice > 1)
+                {
+                 choice--; 
+                } else if (choice == 1)
+                {
+                 choice = max_choice; 
+                }
+                break;
+            case 80: 
+                if (choice < max_choice)
+                {
+                 choice++; 
+                } else if  (choice == max_choice)
+                {
+                 choice = 1;  
+                }
+                break;
+            case 49:
+             choice = 1;
+                break;
+            case 50:
+             choice = 2;
+                break;
+            case 51:
+             choice = 3;
+                break;
+            case 13:  
+                c = 13;
+                break;
+            default:
+            goto Read1;
+                break; 
+            }
+        }while (c != 13); 
+
+        system("cls");
+        
+        switch  (choice)
+        {
+        case 1:
+            display_all_ranges(head);
+            printf("Press enter to continue");
+            getch();
+            system("Cls");
+            break;
+        case 2:
+            display_by_range(head,range,max_ran);
+            printf("Press enter to continue");
+            getch();
+            system("Cls");
+            break;
+        }
+    }while (choice != 3);
+}
+
+void sub_menu_3(cell* head) {
+
+    int choice = 1;                             
+    int max_choice = 3;                       
+    char c;   
+
+    do {
+        
+        do
+        {
+
+            system("cls");
+
+            printf("########################################################################################################################\n");
+            printf("#%118c#\n",32);
+            printf("#%37cQ4) Express each number as a prime product%39c\033[0m#\n",32,32);
+            printf("#%118c#\n",32);
+            printf("########################################################################################################################\n");
+            printf("#%118c#\n",32);
+            printf("#%47cchoose an option:%54c#\n",32,32);
+            printf("#%118c#\n",32);
+            int i ;
+            for (i = 1; i <= max_choice; i++)
+            {
+                if (i == choice)
+                {
+                    printf("#\033[34m --> ");
+                } else {
+                    printf("#     "); 
+                }
+                switch (i)
+                {
+                case 1:
+                    printf("1) Display all prime products%84c\033[0m#\n",32);
+                    break;
+                case 2:
+                    printf("2) Display the prime product of a chosen number%66c\033[0m#\n",32);
+                    break;
+                case 3:
+                    printf("3) Return to main menu%91c\033[0m#\n",32);
+                    break;
+                }
+            }
+
+            // La suite de l'affichage
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("########################################################################################################################\n");
+            printf("#%118c#\n",32);
+            printf("#%36c\033[31mHow to navigate throught the menu\033[0m%49c#\n",32,32);
+            printf("#%26c\033[31mUse the Up and Down arrows or the numbers from 1 to %d\033[0m%39c#\n",32,max_choice,32);
+            printf("#%26c\033[31mPress enter to choose the option after selecting it\033[0m%41c#\n",32,32);
+            printf("#%118c#\n",32);
+            printf("########################################################################################################################\n");
+
+            
+ Read1 :   c = getch();
+
+            
+            switch (c)
+            {
+            case 72: 
+                if  (choice > 1)
+                {
+                 choice--; 
+                } else if (choice == 1)
+                {
+                 choice = max_choice; 
+                }
+                break;
+            case 80: 
+                if (choice < max_choice)
+                {
+                 choice++; 
+                } else if  (choice == max_choice)
+                {
+                 choice = 1;  
+                }
+                break;
+            case 49:
+             choice = 1;
+                break;
+            case 50:
+             choice = 2;
+                break;
+            case 51:
+             choice = 3;
+                break;
+            case 13:  
+                c = 13;
+                break;
+            default:
+            goto Read1;
+                break; 
+            }
+        }while (c != 13); 
+
+        system("cls");
+        
+        switch  (choice)
+        {
+        case 1:
+            print_primeprod(head);
+            printf("Press enter to continue");
+            getch();
+            system("Cls");
+            break;
+        case 2:
+            //implement the prime prod display by number using indxed list here
+            printf("Press enter to continue");
+            getch();
+            system("Cls");
+            break;
+        }
+    }while (choice != 3);
+}
+
+void sub_menu_4(cell* head,int size) {
+
+    int choice = 1;                             
+    int max_choice = 3;                       
+    char c;   
+
+    do {
+        
+        do
+        {
+
+            system("cls");
+
+            printf("########################################################################################################################\n");
+            printf("#%118c#\n",32);
+            printf("#%45cQ5) Find all co-prime numbers%44c\033[0m#\n",32,32);
+            printf("#%118c#\n",32);
+            printf("########################################################################################################################\n");
+            printf("#%118c#\n",32);
+            printf("#%47cchoose an option:%54c#\n",32,32);
+            printf("#%118c#\n",32);
+            int i ;
+            for (i = 1; i <= max_choice; i++)
+            {
+                if (i == choice)
+                {
+                    printf("#\033[34m --> ");
+                } else {
+                    printf("#     "); 
+                }
+                switch (i)
+                {
+                case 1:
+                    printf("1) Display all co-prime numbers%82c\033[0m#\n",32);
+                    break;
+                case 2:
+                    printf("2) Display the co-prime numbers with a chosen number%61c\033[0m#\n",32);
+                    break;
+                case 3:
+                    printf("3) Return to main menu%91c\033[0m#\n",32);
+                    break;
+                }
+            }
+
+            // La suite de l'affichage
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("########################################################################################################################\n");
+            printf("#%118c#\n",32);
+            printf("#%36c\033[31mHow to navigate throught the menu\033[0m%49c#\n",32,32);
+            printf("#%26c\033[31mUse the Up and Down arrows or the numbers from 1 to %d\033[0m%39c#\n",32,max_choice,32);
+            printf("#%26c\033[31mPress enter to choose the option after selecting it\033[0m%41c#\n",32,32);
+            printf("#%118c#\n",32);
+            printf("########################################################################################################################\n");
+
+            
+ Read1 :   c = getch();
+
+            
+            switch (c)
+            {
+            case 72: 
+                if  (choice > 1)
+                {
+                 choice--; 
+                } else if (choice == 1)
+                {
+                 choice = max_choice; 
+                }
+                break;
+            case 80: 
+                if (choice < max_choice)
+                {
+                 choice++; 
+                } else if  (choice == max_choice)
+                {
+                 choice = 1;  
+                }
+                break;
+            case 49:
+             choice = 1;
+                break;
+            case 50:
+             choice = 2;
+                break;
+            case 51:
+             choice = 3;
+                break;
+            case 13:  
+                c = 13;
+                break;
+            default:
+            goto Read1;
+                break; 
+            }
+        }while (c != 13); 
+
+        system("cls");
+        
+        switch  (choice)
+        {
+        case 1:
+            find_all_coprime(head);
+            printf("Press enter to continue");
+            getch();
+            system("Cls");
+            break;
+        case 2:
+            find_coprime(head,size);
+            printf("Press enter to continue");
             getch();
             system("Cls");
             break;

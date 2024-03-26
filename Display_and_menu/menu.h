@@ -8,4 +8,10 @@ void loading_page();
 
 cell* main_menu();
 
-void sub_menu_1(cell** head,bool* decision);
+int sub_menu_1(cell** head,bool* decision);
+
+void sub_menu_2(cell* head,int range,int max_ran);
+
+void sub_menu_3(cell* head);
+
+void sub_menu_4(cell* head,int size);
