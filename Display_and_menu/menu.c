@@ -443,7 +443,6 @@ void sub_menu_1(cell** head,bool* decision) {
             printf("Press enter to continue :");
             getch();
             system("Cls");
-            
             break;
         }
     }while (choice != 3);
