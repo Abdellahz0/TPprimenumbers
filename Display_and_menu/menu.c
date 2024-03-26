@@ -176,7 +176,7 @@ cell* main_menu() {
             printf("#%118c#\n",32);
             printf("########################################################################################################################\n");
             printf("#%118c#\n",32);
-            printf("#%36c\033[31mHow to navigate throwght the menu\033[0m%49c#\n",32,32);
+            printf("#%36c\033[31mHow to navigate throught the menu\033[0m%49c#\n",32,32);
             printf("#%26c\033[31mUse the Up and Down arrows or the numbers from 1 to %d\033[0m%39c#\n",32,max_choise,32);
             printf("#%26c\033[31mPress enter to choose the option after selecting it\033[0m%41c#\n",32,32);
             printf("#%36c\033[31mTo quite the program press 'Esc'\033[0m%50c#\n",32,32);
@@ -235,12 +235,12 @@ cell* main_menu() {
             }
       } while (c != 13); //repeat this loop until the key pressed is ESC
         // execute the user's choise
-        
+        system("Cls");
         int n; //the upper bound for Q1
         int array_size; //the upper bound for the array
         int size; //the upper bound for the list
         int range,max_ran; //to index the list
-
+        
         switch (choise)
         {
           case 1:   
@@ -252,7 +252,7 @@ cell* main_menu() {
               system("Cls");
               break;
           case 2:
-
+              
               printf("enter the upper bound : ");
               scanf("%d",&array_size);
               primes* Array;
@@ -260,6 +260,9 @@ cell* main_menu() {
               check_primes(Array,array_size);
               print_prime(Array,array_size);
               free(Array);
+              printf("Press enter to continue :");
+              getch();
+              system("Cls");
 
              //------------------------------------------------//
             
@@ -268,19 +271,34 @@ cell* main_menu() {
               create_prime_list(size-1,&head);
               check_prime(head);
               printprime_list(head);
+              printf("Press enter to continue :");
+              getch();
+              system("Cls");
+
               break;
           case 3:
               max_ran=index_list(head,&range); 
               display_all_ranges(head);
               display_by_range(head,range,max_ran);
+              printf("Press enter to continue :");
+              getch();
+              system("Cls");
 
               break;
           case 4:
               createprime_prod(head);
               print_primeprod(head);
+              printf("Press enter to continue :");
+              getch();
+              system("Cls");
+
               break;
           case 5:
               find_coprime(head);
+              printf("Press enter to continue :");
+              getch();
+              system("Cls");
+
               break;
         }
     } while(choise != 6);

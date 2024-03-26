@@ -83,17 +83,6 @@ void printprime_list(cell* head){
 }
 
 
-bool is_prime(int x){
-    for (int i = 2; i <= x/2; i++)
-    {
-        if (x%i==0)
-        {
-            return false;
-        }
-    }
-    return true;
-}
-
 void check_prime(cell *head){
 cell* temp1=next(head);
   cell* temp2;

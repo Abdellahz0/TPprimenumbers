@@ -1,4 +1,4 @@
-#include"..\Q2\dynamic\dynamic.h"
+#include"..\Q2\static\static.h"
 
 void ass_ind(cell* p,cell* q);
 

@@ -1,4 +1,4 @@
-
+#include"..\dynamic\dynamic.h"
 
 // Array of prime structure
 typedef struct primes {
@@ -7,7 +7,6 @@ typedef struct primes {
 }primes;
 
 
-bool is_prime(int x);
 
 void createprime_array(primes **Tab,int size1);
 

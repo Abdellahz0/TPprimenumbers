@@ -23,5 +23,5 @@ void display_prime(int n) {
     }
     i++;
   }
-  prinf("\n");
+  printf("\n");
 }

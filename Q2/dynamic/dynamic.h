@@ -1,4 +1,4 @@
-
+#include"..\..\Q1\Q1library.h"
 //inner list
 
 typedef struct Node { //list struct defining
@@ -36,7 +36,5 @@ void free_list(cell* head);
 void create_prime_list(int size,cell** head);
 
 void printprime_list(cell* head);
-
-bool is_prime(int x);
 
 void check_prime(cell *head);

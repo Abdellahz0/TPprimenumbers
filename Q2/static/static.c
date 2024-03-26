@@ -4,16 +4,7 @@
 #include"static.h"
 
 
-bool is_prime(int x){
-    for (int i = 2; i <= x/2; i++)
-    {
-        if (x%i==0)
-        {
-            return false;
-        }
-    }
-    return true;
-}
+
 //   allocate an array with size in the memory and initilize it with only odd nuumbers
 void createprime_array(primes **Tab,int size1){
   *Tab=(primes *)malloc((size1-1)*sizeof(primes));
@@ -54,4 +45,5 @@ void print_prime(primes* Tab,int size1) {
       printf("%4d |",(Tab+i)->n);
     }
   }
+  printf("\n");
 }

@@ -61,6 +61,7 @@ void display_all_ranges(cell* head){
       printf("range is : %d ---> %d \n",value(temp),value(nextind(temp)));
       temp=nextind(temp);
   }
+  printf("\n");
 }
 
 
@@ -83,4 +84,5 @@ void display_by_range(cell* head,int ran,int max_ran){                     // di
       }
       temp=next(temp);
    }
+   printf("\n");
 }
