@@ -57,7 +57,7 @@ void find_coprime(cell* head,int size) {
      n1=next(n1);
    }
    bool n1_prime=prime(n1);
-   printf("the numbers that ara co-prime whith %d are : \n",n);
+   printf("the numbers that ara co-prime with %d are : \n",n);
    cell* n2=head;
    if (n1_prime) {
      while (n2!=NULL) {
