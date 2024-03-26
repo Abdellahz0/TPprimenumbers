@@ -28,11 +28,11 @@ int main() {
 
   //Q4
 
-  // createprime_prod(head);
-  // print_primeprod(head);
+  createprime_prod(head);
+  print_primeprod(head);
   
   //Q5
-  // find_coprime(head);
+  find_coprime(head);
    
 
   free_innerlists(head);
