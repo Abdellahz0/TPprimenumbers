@@ -76,9 +76,12 @@ void display_by_range(cell* head,int ran,int max_ran){                     // di
    {
       temp=nextind(temp);
    }
-   printf("The numbers of the range number %d",pos);
+   printf("The numbers of the range number %d : ",pos);
    while(temp!=NULL && counter<ran){
-      printf("%4d |",value(temp));
+      if (prime(temp))
+      {
+         printf("%4d |",value(temp));
+      }
       if (prime(temp)) {
          counter++;  
       }
