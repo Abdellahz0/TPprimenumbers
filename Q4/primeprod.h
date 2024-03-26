@@ -1,4 +1,4 @@
-#include"../Q3/index.h"
+#include"..\Q3\index.h"
 
 void allocate_Node(Node** p);
 

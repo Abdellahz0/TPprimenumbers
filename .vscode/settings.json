@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "dynamic.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "menu.h": "c"
     }
 }
