@@ -84,21 +84,28 @@ void printprime_list(cell* head){
 
 
 void check_prime(cell *head){
-cell* temp1=next(head);
+  cell* temp1=next(head);
   cell* temp2;
-  while (temp1!=NULL&& next(temp1)!=NULL)
+  while (temp1!=NULL && next(temp1)!=NULL)
   {
     temp2=next(head);
-    if(is_prime(value(temp1))){
-      while (temp2!=NULL&&next(temp2)!=NULL)
+    int value1=value(temp1);
+    if(is_prime(value1)){
+      while (temp2!=NULL&& next(temp2)!=NULL)
       {
-        if (value(temp2)!=value(temp1)&& value(temp2)%value(temp1)==0)
+        if (value(temp2)!=value1&& value(temp2)%value1==0)
         {
-           ass_prime(temp2,false);
+          ass_prime(temp2,false);
         }
         temp2=next(next(temp2));
+      }
+      if (temp2!=NULL) {
+        if (value(temp2)!=value1&& value(temp2)%value1==0)
+        {
+          ass_prime(temp2,false);
+        }
       }
     }
     temp1=next(next(temp1));
   }
-  }
+}
