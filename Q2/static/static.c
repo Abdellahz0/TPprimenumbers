@@ -34,7 +34,7 @@ void createprime_array(prime **Tab,int size1){
   }
 }
 //  logic deletion to all multiples of prime numbers
-void check_prime(prime* Tab, int size1) {
+void check_primes(prime* Tab, int size1) {
    for (int i = 1; i < size1-1; i+=2)
   {
     if (is_prime(i+2)) {

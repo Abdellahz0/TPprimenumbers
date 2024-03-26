@@ -2,7 +2,7 @@
 
 
 int main() {
-  home_page();
+  home_page();           
   loading_page();
   cell* head=main_menu();
   free_innerlists(head);

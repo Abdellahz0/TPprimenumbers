@@ -235,11 +235,16 @@ cell* main_menu() {
             }
       } while (c != 13); //repeat this loop until the key pressed is ESC
         // execute the user's choise
+        
+        int n; //the upper bound for Q1
+        int array_size; //the upper bound for the array
+        int size; //the upper bound for the list
+        int range,max_ran; //to index the list
+
         switch (choise)
         {
           case 1:   
               printf("enter the upper bound : ");
-              int n;
               scanf("%d",&n);
               display_prime(n);
               printf("Press enter to continue :");
@@ -247,15 +252,24 @@ cell* main_menu() {
               system("Cls");
               break;
           case 2:
+
               printf("enter the upper bound : ");
-              int size;
+              scanf("%d",&array_size);
+              prime* Array;
+              createprime_array(&Array,array_size);
+              check_primes(Array,array_size);
+              print_prime(Array,array_size);
+              free(Array);
+
+             //------------------------------------------------//
+            
+              printf("enter the upper bound : ");
               scanf("%d",&size);
               create_prime_list(size-1,&head);
               check_prime(head);
               printprime_list(head);
               break;
           case 3:
-              int range,max_ran;
               max_ran=index_list(head,&range); 
               display_all_ranges(head);
               display_by_range(head,range,max_ran);
