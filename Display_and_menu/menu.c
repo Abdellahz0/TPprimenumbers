@@ -121,8 +121,9 @@ void loading_page() {
 cell* main_menu() {
     cell* head=NULL; //the head of the list 
 
-    int choise = 1;            //the option choosed (set default to one)
-    int max_choise = 5;        //the total number of options
+    int choice = 1;            //the option choosed (set default to one)
+    int choice2=1;
+    int max_choice = 5;        //the total number of options
     char c;                    //the keyboard key pressed by the user
          //loop until the user press ESC
     do
@@ -130,7 +131,7 @@ cell* main_menu() {
             //loop until the user press Enter
         do
         {
-            // display the menu each time the user updates his choise
+            // display the menu each time the user updates his choice
             system("cls");
 
             printf("########################################################################################################################\n");
@@ -143,9 +144,9 @@ cell* main_menu() {
             printf("#%118c#\n",32);
             //the arrow will be before the choosed option 
             int i ;
-            for (i = 1; i <= max_choise; i++)
+            for (i = 1; i <= max_choice; i++)
             {
-                if (i == choise)
+                if (i == choice)
                 {
                     printf("#\033[34m --> "); 
                 } else {
@@ -177,7 +178,7 @@ cell* main_menu() {
             printf("########################################################################################################################\n");
             printf("#%118c#\n",32);
             printf("#%36c\033[31mHow to navigate throught the menu\033[0m%49c#\n",32,32);
-            printf("#%26c\033[31mUse the Up and Down arrows or the numbers from 1 to %d\033[0m%39c#\n",32,max_choise,32);
+            printf("#%26c\033[31mUse the Up and Down arrows or the numbers from 1 to %d\033[0m%39c#\n",32,max_choice,32);
             printf("#%26c\033[31mPress enter to choose the option after selecting it\033[0m%41c#\n",32,32);
             printf("#%36c\033[31mTo quite the program press 'Esc'\033[0m%50c#\n",32,32);
             printf("#%118c#\n",32);
@@ -190,58 +191,56 @@ cell* main_menu() {
             switch (c)
             {
             case 72: //Arrow Up
-                if (choise > 1)
+                if (choice > 1)
                 {
-                    choise--; //go up
-                } else if (choise == 1)
+                    choice--; //go up
+                } else if (choice == 1)
                 {
-                    choise = max_choise; //or go to the last option (circularly)
+                    choice = max_choice; //or go to the last option (circularly)
                 }
                 break;
             case 80: // Arrow Down
-                if (choise < max_choise)
+                if (choice < max_choice)
                 {
-                    choise++; // go down
-                } else if (choise == max_choise)
+                    choice++; // go down
+                } else if (choice == max_choice)
                 {
-                    choise = 1;  //or go to the first option (circularly)
+                    choice = 1;  //or go to the first option (circularly)
                 }
                 break;
             case 49: //for the number '1'
-                choise = 1;
+                choice = 1;
                 break;
             case 50: // '2'
-                choise = 2;
+                choice = 2;
                 break;
             case 51: //'3'
-                choise = 3;
+                choice = 3;
                 break;
             case 52: //'4'
-                choise = 4;
+                choice = 4;
                 break;
             case 53: // '5'
-                choise = 5;
+                choice = 5;
                 break;
-            case 13:    // confirm the choise with Enter
+            case 13:    // confirm the choice with Enter
                 c = 13;
                 break;
             case 27:    // quite the program after pressing ESC
-                choise = 6;
+                choice = 6;
                 c = 13;
                 break;
             default:
-                goto Read;// Ignorer les autres touches et relire le choise
+                goto Read;// Ignorer les autres touches et relire le choice
                 break;
             }
       } while (c != 13); //repeat this loop until the key pressed is ESC
-        // execute the user's choise
+        // execute the user's choice
         system("Cls");
         int n; //the upper bound for Q1
-        int array_size; //the upper bound for the array
-        int size; //the upper bound for the list
         int range,max_ran; //to index the list
         
-        switch (choise)
+        switch (choice)
         {
           case 1:   
               printf("enter the upper bound : ");
@@ -252,29 +251,7 @@ cell* main_menu() {
               system("Cls");
               break;
           case 2:
-              
-              printf("enter the upper bound : ");
-              scanf("%d",&array_size);
-              primes* Array;
-              createprime_array(&Array,array_size);
-              check_primes(Array,array_size);
-              print_prime(Array,array_size);
-              free(Array);
-              printf("Press enter to continue :");
-              getch();
-              system("Cls");
-
-             //------------------------------------------------//
-            
-              printf("enter the upper bound : ");
-              scanf("%d",&size);
-              create_prime_list(size-1,&head);
-              check_prime(head);
-              printprime_list(head);
-              printf("Press enter to continue :");
-              getch();
-              system("Cls");
-
+              sub_menu_1(&head);
               break;
           case 3:
               max_ran=index_list(head,&range); 
@@ -301,7 +278,7 @@ cell* main_menu() {
 
               break;
         }
-    } while(choise != 6);
+    } while(choice != 6);
 
 
     // End of Program
@@ -310,4 +287,143 @@ cell* main_menu() {
     printf("        Press enter to quite the program . . .");
     getchar();
     return head;
+}
+
+void sub_menu_1(cell** head) {
+
+    int choice = 1;                             
+    int max_choice = 3;                       
+    char c;   
+
+    do {
+        
+        do
+        {
+
+            system("cls");
+
+            printf("########################################################################################################################\n");
+            printf("#%118c#\n",32);
+            printf("Q2) Search primes using the two data structures%66c\033[0m#\n",32);
+            printf("#%118c#\n",32);
+            printf("########################################################################################################################\n");
+            printf("#%118c#\n",32);
+            printf("#%47cchoose an option:%47c#\n",32,32);
+            printf("#%118c#\n",32);
+            int i ;
+            for (i = 1; i <= max_choice; i++)
+            {
+                if (i == choice)
+                {
+                    printf("\033[34m# --> ");
+                } else {
+                    printf("#     "); 
+                }
+                switch (i)
+                {
+                case 1:
+                    printf("1) Static implementation%93c\033[0m#\n",32);
+                    break;
+                case 2:
+                    printf("2) Dynamic implementation (Linked list)%78c\033[0m#\n",32);
+                    break;
+                case 3:
+                    printf("3) Return to main menu%83c\033[0m#\n",32);
+                    break;
+                }
+            }
+
+            // La suite de l'affichage
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("#%118c#\n",32);
+            printf("########################################################################################################################\n");
+            printf("#%118c#\n",32);
+            printf("#%36c\033[31mHow to navigate throught the menu\033[0m%49c#\n",32,32);
+            printf("#%26c\033[31mUse the Up and Down arrows or the numbers from 1 to %d\033[0m%39c#\n",32,max_choice,32);
+            printf("#%26c\033[31mPress enter to choose the option after selecting it\033[0m%41c#\n",32,32);
+            printf("#%36c\033[31mTo quite the program press 'Esc'\033[0m%50c#\n",32,32);
+            printf("#%118c#\n",32);
+            printf("########################################################################################################################\n");
+
+            
+ Read1 :   c = getch();
+
+            
+            switch (c)
+            {
+            case 72: 
+                if  (choice > 1)
+                {
+                 choice--; 
+                } else if (choice == 1)
+                {
+                 choice = max_choice; 
+                }
+                break;
+            case 80: 
+                if (choice < max_choice)
+                {
+                 choice++; 
+                } else if  (choice == max_choice)
+                {
+                 choice = 1;  
+                }
+                break;
+            case 49:
+             choice = 1;
+                break;
+            case 50:
+             choice = 2;
+                break;
+            case 51:
+             choice = 3;
+                break;
+            case 13:  
+                c = 13;
+                break;
+            default:
+            goto Read1;
+                break; 
+            }
+        }while (c != 13); 
+
+        system("cls");
+        int array_size; //the upper bound for the array
+        int size; //the upper bound for the list
+        
+        switch  (choice)
+        {
+        case 1:
+            printf("enter the upper bound : ");
+            scanf("%d",&array_size);
+            primes* Array;
+            createprime_array(&Array,array_size);
+            check_primes(Array,array_size);
+            print_prime(Array,array_size);
+            free(Array);
+            printf("Press enter to continue :");
+            getch();
+            system("Cls");
+            break;
+        case 2:
+            printf("enter the upper bound : ");
+            scanf("%d",&size);
+            create_prime_list(size-1,&(*head));
+            check_prime(*head);
+            printprime_list(*head);
+            printf("Press enter to continue :");
+            getch();
+            system("Cls");
+            
+            break;
+        }
+    }while (choice != 3);
 }
