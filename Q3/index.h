@@ -8,4 +8,4 @@ int index_list(cell* head,int* ran);
 
 void display_all_ranges(cell* head);
 
-void display_by_range(cell* head,int ran,int max_ran);
+void display_by_range(cell* head,int pos,int ran,int max_ran);

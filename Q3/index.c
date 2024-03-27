@@ -65,13 +65,9 @@ void display_all_ranges(cell* head){
 }
 
 
-void display_by_range(cell* head,int ran,int max_ran){                     // display by range ex: first range or third ext.
+void display_by_range(cell* head,int pos,int ran,int max_ran){                     // display by range ex: first range or third ext.
    cell* temp=head;
-   int pos,counter=0;
-   do {
-      printf("which range you want to print : ");
-      scanf("%d",&pos);  
-   } while (pos>max_ran || pos<1);
+   int counter=0;
    for (int i = 0; i < pos-1; i++)
    {
       temp=nextind(temp);

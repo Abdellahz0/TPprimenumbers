@@ -268,6 +268,13 @@ cell* main_menu() {
               {
                 max_ran=index_list(head,&range);
                 decision1=true;
+                printf("to index the list we choosed to put in each range %d prime numbers\n",range);
+                printf("for example the first range is from 2 to %d\n",value(nextind(head)));
+                printf("but it contains the following %d primes :\n",range);
+                display_by_range(head,1,range,max_ran);
+                printf("Press enter to continue");
+                getch();
+                system("Cls");
                 sub_menu_2(head,range,max_ran);
               }
               else{
@@ -571,6 +578,7 @@ void sub_menu_2(cell* head,int range,int max_ran) {
         }while (c != 13); 
 
         system("cls");
+        int pos; 
         
         switch  (choice)
         {
@@ -581,7 +589,11 @@ void sub_menu_2(cell* head,int range,int max_ran) {
             system("Cls");
             break;
         case 2:
-            display_by_range(head,range,max_ran);
+             do {
+                printf("which range you want to print : ");
+                scanf("%d",&pos);  
+            } while (pos>max_ran || pos<1);
+            display_by_range(head,pos,range,max_ran);
             printf("Press enter to continue");
             getch();
             system("Cls");
