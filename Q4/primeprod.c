@@ -137,7 +137,7 @@ temp=head;
 void print_primeprod_num(cell* head,int val){
   cell* temp=head;
   Node* temp2;
-  while (temp!=NULL)
+  while (next(temp)!=NULL)
   {
     if (val<value(nextind(temp)))
     {
