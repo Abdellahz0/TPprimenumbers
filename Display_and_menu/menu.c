@@ -583,7 +583,7 @@ void sub_menu_2(cell* head,int range,int max_ran) {
 }
 
 void sub_menu_3(cell* head) {
-
+    int val;
     int choice = 1;                             
     int max_choice = 3;                       
     char c;   
@@ -698,7 +698,9 @@ void sub_menu_3(cell* head) {
             system("Cls");
             break;
         case 2:
-            //implement the prime prod display by number using indxed list here
+            printf("Enter the number you want to know its prime product :");
+            scanf("%d",&val);
+            print_primeprod_num(head,val);    //implement the prime prod display by number using indxed list here
             printf("Press enter to continue");
             getch();
             system("Cls");

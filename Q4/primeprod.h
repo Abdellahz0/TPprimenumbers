@@ -25,3 +25,5 @@ void free_innerlists(cell* head);
 void createprime_prod(cell* head);
 
 void print_primeprod(cell* head);
+
+void print_primeprod_num(cell* head,int val);
