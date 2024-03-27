@@ -121,8 +121,10 @@ void loading_page() {
 cell* main_menu() {
     cell* head=NULL; //the head of the list 
     bool decision=false; //for menu logic Q2
-    //Q3,Q4 must not be executed unless Q2 is executed
-    bool decision1=false; //for menu logic Q5 
+    //Q3 must not be executed unless Q2 is executed
+    bool decision1=false; // for menu logic Q4
+    //Q4 must not be executed unless Q2 and Q3 are executed 
+    bool decision2=false; //for menu logic Q5 
     //Q5 must not be executed unless Q2 and Q4 are executed
     int choice = 1;            //the option choosed (set default to one)
     int choice2=1;
@@ -151,7 +153,7 @@ cell* main_menu() {
             {
                 if (i == choice)
                 {
-                    if (choice<=2 || ((choice==3 || choice==4) && decision) || (choice==5 && decision1)) {
+                    if (choice<=2 || (choice==3 && decision) || (choice==4 && decision1) || (choice==5 && decision2)) {
                        printf("#\033[34m --> ");
                     } else {
                         printf("#\033[31m --> ");
@@ -265,6 +267,7 @@ cell* main_menu() {
               if (decision)
               {
                 max_ran=index_list(head,&range);
+                decision1=true;
                 sub_menu_2(head,range,max_ran);
               }
               else{
@@ -275,21 +278,26 @@ cell* main_menu() {
               }
               break;
           case 4:
-              if (decision)
+              if (decision && decision1)
               {
                createprime_prod(head);
-               decision1=true;
+               decision2=true;
                sub_menu_3(head,size);
               }
-             else{
-                printf("You have to create the linked list first in question 2 dynamic implementation\n");
-                printf("Press enter to continue");
-                getch();
-                system("Cls");
-              }
+             else {
+               if (!decision){
+                 printf("You have to create the linked list first in question 2 dynamic implementation\n");
+                 printf("then index it in Q3\n");
+               } else {
+                 printf("you have to index the list in Q3\n");
+               }
+               printf("Press enter to continue");
+               getch();
+               system("Cls");
+             }
               break;
           case 5:
-                if (decision && decision1)
+                if (decision && decision2)
               {
                 sub_menu_4(head,size);
               }
@@ -699,6 +707,7 @@ void sub_menu_3(cell* head,int size) {
             break;
         case 2:
             do {
+              printf("between 2 and %d ",size);
               printf("Enter the number you want to know its prime product :");
               scanf("%d",&val);
             } while (val<2 || val>size);

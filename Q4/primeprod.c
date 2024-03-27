@@ -153,14 +153,14 @@ void print_primeprod_num(cell* head,int val){
   }
   if (prime(temp))
   {
-     printf("This number is prime it does not have prime product");
+     printf("This number is prime it does not have prime product\n");
   }
   else{
   printf("the prime prod of %d is :",val);
   temp2=access_inner_head(temp);
   while(temp2!=NULL){
    if (next_Node(temp2)==NULL) {
-          printf("%d^%d",diviser(temp2),power(temp2));
+          printf("%d^%d\n",diviser(temp2),power(temp2));
         } else {
           printf("%d^%d * ",diviser(temp2),power(temp2));
         }

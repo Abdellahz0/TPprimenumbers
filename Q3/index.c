@@ -71,7 +71,7 @@ void display_by_range(cell* head,int ran,int max_ran){                     // di
    do {
       printf("which range you want to print : ");
       scanf("%d",&pos);  
-   } while (pos>max_ran && pos<=0);
+   } while (pos>max_ran || pos<1);
    for (int i = 0; i < pos-1; i++)
    {
       temp=nextind(temp);
