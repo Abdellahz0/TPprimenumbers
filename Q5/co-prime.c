@@ -51,7 +51,7 @@ void find_coprime(cell* head,int size) {
    do {
      printf("give your number between 2 and %d : ",size);
      scanf("%d",&n);
-   } while (n<2 && n>size);
+   } while (n<2 || n>size);
    cell* n1=head;
    while(value(n1)!=n) {
      n1=next(n1);

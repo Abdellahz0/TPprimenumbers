@@ -279,7 +279,7 @@ cell* main_menu() {
               {
                createprime_prod(head);
                decision1=true;
-               sub_menu_3(head);
+               sub_menu_3(head,size);
               }
              else{
                 printf("You have to create the linked list first in question 2 dynamic implementation\n");
@@ -582,7 +582,7 @@ void sub_menu_2(cell* head,int range,int max_ran) {
     }while (choice != 3);
 }
 
-void sub_menu_3(cell* head) {
+void sub_menu_3(cell* head,int size) {
     int val;
     int choice = 1;                             
     int max_choice = 3;                       
@@ -698,9 +698,11 @@ void sub_menu_3(cell* head) {
             system("Cls");
             break;
         case 2:
-            printf("Enter the number you want to know its prime product :");
-            scanf("%d",&val);
-            print_primeprod_num(head,val);    //implement the prime prod display by number using indxed list here
+            do {
+              printf("Enter the number you want to know its prime product :");
+              scanf("%d",&val);
+            } while (val<2 || val>size);
+            print_primeprod_num(head,val);
             printf("Press enter to continue");
             getch();
             system("Cls");

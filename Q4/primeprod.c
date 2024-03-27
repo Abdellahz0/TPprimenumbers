@@ -137,11 +137,6 @@ temp=head;
 void print_primeprod_num(cell* head,int val){
   cell* temp=head;
   Node* temp2;
-  // if (val>up  || val<2 )
-  // {
-    // printf("This value does not belong to this linked list");
-  // }
-  //else{
   while (temp!=NULL)
   {
     if (val<value(nextind(temp)))
@@ -164,13 +159,13 @@ void print_primeprod_num(cell* head,int val){
   printf("the prime prod of %d is :",val);
   temp2=access_inner_head(temp);
   while(temp2!=NULL){
-  if (next_Node(temp2)==NULL) {
+   if (next_Node(temp2)==NULL) {
           printf("%d^%d",diviser(temp2),power(temp2));
         } else {
           printf("%d^%d * ",diviser(temp2),power(temp2));
         }
         temp2=next_Node(temp2);
   }
-}
+ }
 }
 
