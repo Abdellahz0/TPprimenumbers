@@ -83,5 +83,8 @@ void display_by_range(cell* head,int pos,int ran,int max_ran){                  
       }
       temp=next(temp);
    }
+   if (counter==0) {
+      printf("this range has no primes");
+   }
    printf("\n");
 }
