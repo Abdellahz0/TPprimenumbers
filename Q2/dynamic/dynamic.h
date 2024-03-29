@@ -17,7 +17,7 @@ typedef struct cell { //list struct defining
 }cell;
 
 
-void allocate_cell(cell** p);
+void allocate_cell(cell** p);   
 
 int value(cell* p);
 

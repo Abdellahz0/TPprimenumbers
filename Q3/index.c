@@ -14,8 +14,8 @@ cell* nextind(cell* p){
    return p->index;
 }
 
-int index_list(cell*head,int* ran){
-  int counter=0,max_ran=0;
+int index_list(cell*head,int* ran){   // index the list by a given range to be in this shape
+  int counter=0,max_ran=0;            //  |______________| |______________|  |______________|
   cell* temp;
   cell* temp1;
    temp=head;
@@ -78,7 +78,7 @@ cell* search_by_range(cell* head,int val) { //get the address of a value using t
 } 
 
 
-void display_all_ranges(cell* head){
+void display_all_ranges(cell* head){       // diplay all the ranges ex:  start_num---->final_num
   cell* temp=head;
   while (nextind(temp)!=NULL)
   {

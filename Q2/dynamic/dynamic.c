@@ -15,7 +15,7 @@ int value(cell* p) { //give the value of a cell
   return p->value;
 }
 
-bool prime(cell* p) {
+bool prime(cell* p) {  // give true for prime and false for not prime of number
   return p->pr;
 }
 
@@ -23,15 +23,15 @@ cell* next(cell* p) { //give the next cell pointer
   return p->next;
 }
 
-void ass_val(cell*p,int v) { //assigne a value to the cell
+void ass_val(cell*p,int v) { //assign a value to the cell
   p->value=v;
 }
  
-void ass_prime(cell* p,bool v) {
+void ass_prime(cell* p,bool v) {  // assign true for prime numbers and false for not prime numbers
   p->pr=v;
 }
 
-void ass_adr(cell* p,cell* q) { //assigne a next value to the cell
+void ass_adr(cell* p,cell* q) { //assign a next value to the cell
   p->next=q;
 }
 
@@ -69,7 +69,7 @@ void create_prime_list(int size,cell** head) { //create a list with size cell
   }
 }
 
-void printprime_list(cell* head){
+void printprime_list(cell* head){     // print only prime numbers in the linked list
   cell* current=head;
   printf("The list is :");
   while (current!=NULL)
@@ -83,7 +83,7 @@ void printprime_list(cell* head){
 }
 
 
-void check_prime(cell *head){
+void check_prime(cell *head){          // logic deletion for all numbers that are not prime
   cell* temp1=next(head);
   cell* temp2;
   while (temp1!=NULL && next(temp1)!=NULL)

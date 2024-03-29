@@ -38,7 +38,7 @@ void check_primes(primes* Tab, int size1) {
     }
   }
 }
-
+//  print only prime numbers in array
 void print_prime(primes* Tab,int size1) {
   for (int i=0;i<size1-1;i++){
     if ((Tab+i)->pr==true) {
