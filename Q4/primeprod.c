@@ -146,25 +146,9 @@ void print_primeprod(cell* head){ //displays the prime product off all the numbe
 
 void print_primeprod_num(cell* head,int val){ //displays the prime product of a given number
  //it uses the indexed list for a quick access to the number
-  cell* temp=head;
+  cell* temp;
   Node* temp2;
-  while (next(temp)!=NULL) //we will use the indexed list to find the range of the given number
-  //the condition next(temp)!=NULL can be replaced by nextind(temp)!=NULL 
-  //or by changing the instructions in the loop we can just compare val to value(temp) then the condition will be temp!=NULL but a new variable prev must be introduced
-  //val is already insured to be in the list (between 2 and n) in the menu
-  {
-    if (val<value(nextind(temp))) //nextind(temp) returns the next range starting address
-    {
-       break;
-    }
-    if (val>=value(nextind(temp)))
-    {
-      temp=nextind(temp);
-    }
-  } //ones we found the range where val belongs to we will find val using this loop
-  while(value(temp)!=val){
-    temp=next(temp);
-  }
+  temp=search_by_range(head,val); //get the address of a value using the indexed list to reduce the number of iterations
   if (prime(temp)) //the same as the print_primeprod function
   {
      printf("This number is prime it does not have prime product\n");
