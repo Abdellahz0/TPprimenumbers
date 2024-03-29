@@ -12,7 +12,7 @@ cell* main_menu(); //the menu where the user manipulates the differente question
 
 int sub_menu_1(cell** head,bool* decision); //a sub-menu for the question 2
 
-void sub_menu_2(cell* head,int range,int max_ran); //a sub-menu for the question 3
+void sub_menu_2(cell* head,int range,int max_ran,int size); //a sub-menu for the question 3
 
 void sub_menu_3(cell* head,int size); //a sub-menu for the question 4
 

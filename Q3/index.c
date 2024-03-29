@@ -89,7 +89,7 @@ void display_all_ranges(cell* head){       // diplay all the ranges ex:  start_n
 }
 
 
-void display_by_range(cell* head,int pos,int ran,int max_ran){                     // display by range ex: first range or third ext.
+void display_by_range(cell* head,int pos,int ran,int max_ran){   // display by range ex: first range or third ext.
    cell* temp=head;
    int counter=0;
    for (int i = 0; i < pos-1; i++)
@@ -109,6 +109,28 @@ void display_by_range(cell* head,int pos,int ran,int max_ran){                  
    }
    if (counter==0) {
       printf("this range has no primes");
+   }
+   printf("\n");
+}
+
+
+void display_primes_by_range(cell* head,int size) { //displays the prime numbers between two values using the indexed list
+   int ub,lb; //get the lower and the upper bounds from the user
+   do {
+      printf("enter the lower bound and the upper bound of your range\n");
+      printf("the lower bound must be greater or equal 2\n");
+      printf("the upper bound must be less or equal to %d\n",size);
+      printf("and the lower bound must be strictly less then the upper bound : ");
+      scanf("%d %d",&lb,&ub);
+      printf("\n");
+   } while ( lb<2 || lb>=ub || ub>size);
+   cell* lower_bound=search_by_range(head,lb); //use the indexed list to get into the right range
+   printf("all prime numbers between %d and %d are : ",lb,ub);
+   while (lower_bound!=NULL && value(lower_bound)<=ub) {
+      if(prime(lower_bound)) {
+         printf("%3d |",value(lower_bound));
+      }
+      lower_bound=next(lower_bound);
    }
    printf("\n");
 }

@@ -279,8 +279,13 @@ cell* main_menu() { //the menu where the user manipulates the differente questio
                 printf("for example the first range is from 2 to %d\n",value(nextind(head)));
                 printf("but it contains the following %d primes :\n",range);
                 display_by_range(head,1,range,max_ran);
+                printf("\nindexed list efficiency :\n");
+                printf("let's take for example the number %d\n",size);
+                cell* test=search_by_range(head,size);
+                printf("to get the address of the cell helding it which is %p\n",test);
+                printf("we will iterate %d times using the normal list but %d times using the indexed one\n",size-2,max_ran);
                 hold_results();
-                sub_menu_2(head,range,max_ran); //some modules that uses the indexed list
+                sub_menu_2(head,range,max_ran,size); //some modules that uses the indexed list
               }
               else{
                 printf("You have to create the linked list first in question 2 dynamic implementation\n");
@@ -316,7 +321,7 @@ cell* main_menu() { //the menu where the user manipulates the differente questio
                 if(!decision){
                   printf("You have to create the linked list first in question 2 dynamic implementation\n then create the prime product sub-list in question 4 after indexing the list\n");
                } else if (!decision1) {
-                  printf("You have to index the list in question 3 and create the prime product in question 4");
+                  printf("You have to index the list in question 3 and create the prime product in question 4\n");
                } else {
                   printf("You have to create the prime product sub-list in question 4\n");
                }
@@ -473,10 +478,10 @@ int sub_menu_1(cell** head,bool* decision) {
     return size;
 }
 
-void sub_menu_2(cell* head,int range,int max_ran) {
+void sub_menu_2(cell* head,int range,int max_ran,int size) {
 
     int choice = 1;                             
-    int max_choice = 3;                       
+    int max_choice = 4;                       
     char c;   
 
     do {
@@ -512,7 +517,10 @@ void sub_menu_2(cell* head,int range,int max_ran) {
                     printf("2) Display a chosen range%88c\033[0m#\n",32);
                     break;
                 case 3:
-                    printf("3) Return to main menu%91c\033[0m#\n",32);
+                    printf("3) Display prime numbers between two values%70c\033[0m#\n",32);
+                    break;
+                case 4:
+                    printf("4) Return to main menu%91c\033[0m#\n",32);
                     break;
                 }
             }
@@ -568,6 +576,9 @@ void sub_menu_2(cell* head,int range,int max_ran) {
             case 51:
              choice = 3;
                 break;
+            case 52:
+             choice = 4;
+                break;
             case 13:  
                 c = 13;
                 break;
@@ -594,8 +605,12 @@ void sub_menu_2(cell* head,int range,int max_ran) {
             display_by_range(head,pos,range,max_ran);
             hold_results();
             break;
+        case 3:
+            display_primes_by_range(head,size);
+            hold_results();
+            break;
         }
-    }while (choice != 3);
+    } while (choice != 4);
 }
 
 void sub_menu_3(cell* head,int size) {

@@ -11,3 +11,5 @@ cell* search_by_range(cell* head,int val); //get the address of a value using th
 void display_all_ranges(cell* head);
 
 void display_by_range(cell* head,int pos,int ran,int max_ran);
+
+void display_primes_by_range(cell* head,int size); //displays the prime numbers between two values using the indexed list
