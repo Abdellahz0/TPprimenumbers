@@ -4,7 +4,7 @@
 #include"menu.h"
 
 
-void home_page() {
+void home_page() {  //displays ESI logo
 
     system("Cls"); //clear the terminal
     int color ;
@@ -73,7 +73,7 @@ void home_page() {
 
 //-----------------------------------------------//-----------------------------------------------//
 
-void loading_page() {
+void loading_page() { //displays a simple loading animation
 
     //just displaying a diffrent frame after each 300ms
     //and clear the terminal after each frame 
@@ -118,7 +118,14 @@ void loading_page() {
 
 //-----------------------------------------------//-----------------------------------------------//
 
-cell* main_menu() {
+void hold_results() { //to let the user see the results before clearing the terminal
+    printf("\npress Enter to continue");
+    getch();
+    system("Clr");
+}
+
+cell* main_menu() { //the menu where the user manipulates the differente questions in the TP
+    
     cell* head=NULL; //the head of the list 
     bool decision=false; //for menu logic Q2
     //Q3 must not be executed unless Q2 is executed
@@ -152,7 +159,8 @@ cell* main_menu() {
             for (i = 1; i <= max_choice; i++)
             {
                 if (i == choice)
-                {
+                {   
+                    //if the option is not accessable display it with red otherwise display it with blue
                     if (choice<=2 || (choice==3 && decision) || (choice==4 && decision1) || (choice==5 && decision2)) {
                        printf("#\033[34m --> ");
                     } else {
@@ -252,71 +260,67 @@ cell* main_menu() {
         
         switch (choice)
         {
-          case 1:   
-              printf("enter the upper bound : ");
+          case 1:  //Q1 not data structures 
+              printf("enter the upper bound : "); 
               scanf("%d",&n);
               display_prime(n);
-              printf("Press enter to continue");
-              getch();
-              system("Cls");
+              hold_results();
               break;
-          case 2:
+          case 2: //Q2 with data structures
               size=sub_menu_1(&head,&decision);
               break;
-          case 3:
-              if (decision)
+          case 3: //Q3 index the list
+              if (decision) //index the list only if it exists (Q2 executed) 
               {
                 max_ran=index_list(head,&range);
-                decision1=true;
+                decision1=true; //to open Q4 for the user
+                //some explanations on how we understood Q3 and how we did it 
                 printf("to index the list we choosed to put in each range %d prime numbers\n",range);
                 printf("for example the first range is from 2 to %d\n",value(nextind(head)));
                 printf("but it contains the following %d primes :\n",range);
                 display_by_range(head,1,range,max_ran);
-                printf("Press enter to continue");
-                getch();
-                system("Cls");
-                sub_menu_2(head,range,max_ran);
+                hold_results();
+                sub_menu_2(head,range,max_ran); //some modules that uses the indexed list
               }
               else{
                 printf("You have to create the linked list first in question 2 dynamic implementation\n");
-                printf("Press enter to continue");
-                getch();
-                system("Cls");
+                hold_results();
               }
               break;
           case 4:
-              if (decision && decision1)
+              if (decision && decision1) //if Q2 and Q3 were executed
               {
+               //Q3 is not necessary for creating the prime products inner_lists but some displaying modules in Q4 uses the indexed list
                createprime_prod(head);
-               decision2=true;
+               decision2=true; //open Q5 for the user
                sub_menu_3(head,size);
               }
              else {
-               if (!decision){
+               if (!decision){ //if Q2 and Q3 are both not executed
                  printf("You have to create the linked list first in question 2 dynamic implementation\n");
                  printf("then index it in Q3\n");
-               } else {
+               } else { //if Q2 was executed but Q3 is not
                  printf("you have to index the list in Q3\n");
                }
-               printf("Press enter to continue");
-               getch();
-               system("Cls");
+               hold_results();
              }
               break;
           case 5:
-                if (decision && decision2)
+                if (decision && decision2) //if Q2 ,Q3 and Q4 are already executed
               {
                 sub_menu_4(head,size);
               }
              else {
+                //the reason why we need Q4 to be executed is that we are using the prime product lists to determine co-prime numbers
+                //and the reason why we need Q3 is because some modules uses the indexed list for searching values addresses
                 if(!decision){
-                  printf("You have to create the linked list first in question 2 dynamic implementation\n then create the prime product sub-list in question 4\n");
+                  printf("You have to create the linked list first in question 2 dynamic implementation\n then create the prime product sub-list in question 4 after indexing the list\n");
+               } else if (!decision1) {
+                  printf("You have to index the list in question 3 and create the prime product in question 4");
                } else {
                   printf("You have to create the prime product sub-list in question 4\n");
                }
-               printf("Press enter to continue");
-               getch();
-               system("Cls");
+               hold_results();
              }
               break;
         }
@@ -331,8 +335,10 @@ cell* main_menu() {
     return head;
 }
 
-int sub_menu_1(cell** head,bool* decision) {
+//sub-menus logic same as the main-menu to get the arrow animation
 
+int sub_menu_1(cell** head,bool* decision) {
+    
     int choice = 1;                             
     int max_choice = 3;                       
     char c;   
@@ -378,7 +384,6 @@ int sub_menu_1(cell** head,bool* decision) {
                 }
             }
 
-            // La suite de l'affichage
             printf("#%118c#\n",32);
             printf("#%118c#\n",32);
             printf("#%118c#\n",32);
@@ -451,9 +456,7 @@ int sub_menu_1(cell** head,bool* decision) {
             check_primes(Array,array_size);
             print_prime(Array,array_size);
             free(Array);
-            printf("Press enter to continue");
-            getch();
-            system("Cls");
+            hold_results();
             break;
         case 2:
             printf("enter the upper bound : ");
@@ -462,9 +465,7 @@ int sub_menu_1(cell** head,bool* decision) {
             check_prime(*head);
             printprime_list(*head);
             *decision=true;
-            printf("Press enter to continue");
-            getch();
-            system("Cls");
+            hold_results();
             break;
         }
     }while (choice != 3);
@@ -516,7 +517,6 @@ void sub_menu_2(cell* head,int range,int max_ran) {
                 }
             }
 
-            // La suite de l'affichage
             printf("#%118c#\n",32);
             printf("#%118c#\n",32);
             printf("#%118c#\n",32);
@@ -584,9 +584,7 @@ void sub_menu_2(cell* head,int range,int max_ran) {
         {
         case 1:
             display_all_ranges(head);
-            printf("Press enter to continue");
-            getch();
-            system("Cls");
+            hold_results();
             break;
         case 2:
              do {
@@ -594,9 +592,7 @@ void sub_menu_2(cell* head,int range,int max_ran) {
                 scanf("%d",&pos);  
             } while (pos>max_ran || pos<1);
             display_by_range(head,pos,range,max_ran);
-            printf("Press enter to continue");
-            getch();
-            system("Cls");
+            hold_results();
             break;
         }
     }while (choice != 3);
@@ -646,7 +642,6 @@ void sub_menu_3(cell* head,int size) {
                 }
             }
 
-            // La suite de l'affichage
             printf("#%118c#\n",32);
             printf("#%118c#\n",32);
             printf("#%118c#\n",32);
@@ -713,9 +708,7 @@ void sub_menu_3(cell* head,int size) {
         {
         case 1:
             print_primeprod(head);
-            printf("Press enter to continue");
-            getch();
-            system("Cls");
+            hold_results();
             break;
         case 2:
             do {
@@ -724,9 +717,7 @@ void sub_menu_3(cell* head,int size) {
               scanf("%d",&val);
             } while (val<2 || val>size);
             print_primeprod_num(head,val);
-            printf("Press enter to continue");
-            getch();
-            system("Cls");
+            hold_results();
             break;
         }
     }while (choice != 3);
@@ -776,7 +767,6 @@ void sub_menu_4(cell* head,int size) {
                 }
             }
 
-            // La suite de l'affichage
             printf("#%118c#\n",32);
             printf("#%118c#\n",32);
             printf("#%118c#\n",32);
@@ -843,15 +833,11 @@ void sub_menu_4(cell* head,int size) {
         {
         case 1:
             find_all_coprime(head);
-            printf("Press enter to continue");
-            getch();
-            system("Cls");
+            hold_results();
             break;
         case 2:
             find_coprime(head,size);
-            printf("Press enter to continue");
-            getch();
-            system("Cls");
+            hold_results();
             break;
         }
     }while (choice != 3);
