@@ -3,23 +3,24 @@
 #include"co-prime.h"
 
 
-//here we will use the prime product sub-lists to find co-prime numbers
+//we will use the prime product sub-lists to find co-prime numbers
 
-void find_all_coprime(cell* head){
-   cell* n1=head;
+void find_all_coprime(cell* head){ //finds all the co-prime numbers and display them all
+   cell* n1=head; //we need to pointers to the list n1 and n2
    cell* n2;
-   while (n1!=NULL){
-     n2=next(n1);
-     bool n1_prime=prime(n1);
+   while (n1!=NULL){ //we will itereate throught the list
+     n2=next(n1); //for each value of n1, n2 will get only the values strictly larger then n1
+     //because a number is not co-prime with itself and also saying 2 is co-prime with 3 is same as saying 3 is co-prime with 2
+     bool n1_prime=prime(n1); //we will hold the information of the value of n1 and wether it is prime or not
      int n1_value=value(n1);
-     while (n2!=NULL){
-      if (n1_prime&&prime(n2)) {
+     while (n2!=NULL){ //we will iterate throught the list where value(n2)>value(n1)
+      if (n1_prime&&prime(n2)) { //if both are primes then they are co-prime
         printf("%d  &  %d are co-prime numbers\n",value(n1),value(n2));
-      } else if (n1_prime) {
+      } else if (n1_prime) { //if value(n1) was a prime then we can just check if value(n2) is divisible by value(n1)
         if (value(n2)%n1_value!=0){
           printf("%d  &  %d are co-prime numbers\n",value(n1),value(n2));
         }
-      } else {
+      } else { //otherwise ()
         Node* temp1=access_inner_head(n1);
         Node* temp2=access_inner_head(n2);
         bool coPrime=true;
@@ -46,7 +47,7 @@ void find_all_coprime(cell* head){
 }
 
 
-void find_coprime(cell* head,int size) {
+void find_coprime(cell* head,int size) { //finds the co-prime numbers with a given number
    int n;
    do {
      printf("give your number between 2 and %d : ",size);
