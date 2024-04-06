@@ -90,7 +90,7 @@ void check_prime(cell *head,int *iter2){          // logic deletion for all numb
   {
     temp2=next(head);
     int value1=value(temp1);
-    if(is_prime(value1,&(*iter2))){
+    if(prime(temp1)){
       while (temp2!=NULL&& next(temp2)!=NULL)
       {
         if (value(temp2)!=value1&& value(temp2)%value1==0)

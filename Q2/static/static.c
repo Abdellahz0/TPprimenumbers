@@ -28,7 +28,7 @@ void createprime_array(primes **Tab,int size1){
 void check_primes(primes* Tab, int size1,int *iter3) {
    for (int i = 1; i < size1-1; i+=2)
   {
-    if (is_prime(i+2,&(*iter3))) {
+    if ((Tab+i+2)) {
       for (int j = 1; j < size1-1; j+=2)
       {
         if ((j+2)!=(i+2)&&(j+2)%(i+2)==0) {
