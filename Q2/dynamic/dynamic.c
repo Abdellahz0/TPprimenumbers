@@ -83,14 +83,14 @@ void printprime_list(cell* head){     // print only prime numbers in the linked 
 }
 
 
-void check_prime(cell *head){          // logic deletion for all numbers that are not prime
+void check_prime(cell *head,int *iter2){          // logic deletion for all numbers that are not prime
   cell* temp1=next(head);
   cell* temp2;
   while (temp1!=NULL && next(temp1)!=NULL)
   {
     temp2=next(head);
     int value1=value(temp1);
-    if(is_prime(value1)){
+    if(is_prime(value1,&(*iter2))){
       while (temp2!=NULL&& next(temp2)!=NULL)
       {
         if (value(temp2)!=value1&& value(temp2)%value1==0)
@@ -98,6 +98,7 @@ void check_prime(cell *head){          // logic deletion for all numbers that ar
           ass_prime(temp2,false);
         }
         temp2=next(next(temp2));
+        (*iter2)++;
       }
       if (temp2!=NULL) {
         if (value(temp2)!=value1&& value(temp2)%value1==0)
@@ -106,6 +107,7 @@ void check_prime(cell *head){          // logic deletion for all numbers that ar
         }
       }
     }
+    (*iter2)++;
     temp1=next(next(temp1));
   }
 }

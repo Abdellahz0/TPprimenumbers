@@ -37,4 +37,4 @@ void create_prime_list(int size,cell** head);
 
 void printprime_list(cell* head);
 
-void check_prime(cell *head);
+void check_prime(cell *head,int *iter2);

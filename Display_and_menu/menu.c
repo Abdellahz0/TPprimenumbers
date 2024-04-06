@@ -257,17 +257,19 @@ cell* main_menu() { //the menu where the user manipulates the differente questio
         int n; //the upper bound for Q1
         int size; //the upper bound for Q2 dynamic
         int range,max_ran; //to index the list
+        int iter1=0,iter2=0,iter3=0; //number of iterations in Q6 
         
         switch (choice)
         {
           case 1:  //Q1 not data structures 
               printf("enter the upper bound : "); 
               scanf("%d",&n);
-              display_prime(n);
+              display_prime(n,&iter1);
+              printf("the number of iterations is %d",iter1);
               hold_results();
               break;
           case 2: //Q2 with data structures
-              size=sub_menu_1(&head,&decision);
+              size=sub_menu_1(&head,&decision,&iter3,&iter2);
               break;
           case 3: //Q3 index the list
               if (decision) //index the list only if it exists (Q2 executed) 
@@ -342,7 +344,7 @@ cell* main_menu() { //the menu where the user manipulates the differente questio
 
 //sub-menus logic same as the main-menu to get the arrow animation
 
-int sub_menu_1(cell** head,bool* decision) {
+int sub_menu_1(cell** head,bool* decision,int *iter3,int *iter2) {
     
     int choice = 1;                             
     int max_choice = 3;                       
@@ -458,17 +460,21 @@ int sub_menu_1(cell** head,bool* decision) {
             scanf("%d",&array_size);
             primes* Array;
             createprime_array(&Array,array_size);
-            check_primes(Array,array_size);
+            check_primes(Array,array_size,&(*iter3));
             print_prime(Array,array_size);
             free(Array);
+            printf("the number of iterations is %d",*iter3);
+            *iter3=0;
             hold_results();
             break;
         case 2:
             printf("enter the upper bound : ");
             scanf("%d",&size);
             create_prime_list(size-1,&(*head));
-            check_prime(*head);
+            check_prime(*head,&(*iter2));
             printprime_list(*head);
+            printf("the numeber of iterations is %d",*iter2);
+            *iter2=0;
             *decision=true;
             hold_results();
             break;

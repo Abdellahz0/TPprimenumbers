@@ -10,7 +10,7 @@ void hold_results(); //to let the user see the results before clearing the termi
 
 cell* main_menu(); //the menu where the user manipulates the differente questions in the TP
 
-int sub_menu_1(cell** head,bool* decision); //a sub-menu for the question 2
+int sub_menu_1(cell** head,bool* decision,int* iter3,int* iter2); //a sub-menu for the question 2
 
 void sub_menu_2(cell* head,int range,int max_ran,int size); //a sub-menu for the question 3
 
