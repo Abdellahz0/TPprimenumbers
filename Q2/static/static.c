@@ -28,17 +28,17 @@ void createprime_array(primes **Tab,int size1){
 void check_primes(primes* Tab, int size1,int *iter3) {
    for (int i = 1; i < size1-1; i+=2)
   {
-    if ((Tab+i+2)) {
-      for (int j = 1; j < size1-1; j+=2)
+    if ((Tab+i+2)->pr) {
+      for (int j = i+2; j < size1-1; j+=2)
       {
-        if ((j+2)!=(i+2)&&(j+2)%(i+2)==0) {
-          (Tab+j)->pr=false;
-          (*iter3)++;
+        if ((j+2)%(i+2)==0) { //we compare with j+2 but we update the cell of index j
+          (Tab+j)->pr=false;  //because the number in the cell is its index plus two
         }
+        (*iter3)++;
       }
     }
+    (*iter3)++;
   }
-  (*iter3)++;
 }
 //  print only prime numbers in array
 void print_prime(primes* Tab,int size1) {

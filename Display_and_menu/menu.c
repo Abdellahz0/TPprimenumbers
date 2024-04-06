@@ -338,7 +338,7 @@ cell* main_menu() { //the menu where the user manipulates the differente questio
     system("cls");
     printf("\n\n        thank you for using our program\n\n");
     printf("        Press enter to quite the program . . .");
-    getchar();
+    getch();
     return head;
 }
 
