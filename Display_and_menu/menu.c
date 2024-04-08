@@ -195,7 +195,7 @@ cell *main_menu()
                     printf("Q5) Find all co-prime numbers%84c\033[0m#\n", 32);
                     break;
                 case 6:
-                    printf("Q6) The number of iterations of Q1 and Q2%74c\033[0m#\n", 32);
+                    printf("Q6) The number of iterations of Q1 and Q2%72c\033[0m#\n", 32);
                     break;
                 }
             }
@@ -366,7 +366,8 @@ cell *main_menu()
             cell *head2;
             printf("the primes are : ");
             display_prime(n, &iter1);
-            
+            printf("\n");
+
             createprime_array(&Array, n);
             check_primes(Array, n, &iter3);
             free(Array);
@@ -377,7 +378,21 @@ cell *main_menu()
 
             printf("The number of iterations of the simple method (without any structure) is : %d\n", iter1);
             printf("The number of iterations using the structure by static method is : %d\n", iter3);
-            printf("The number of iterations using the structure by dynamic method is : %d\n", iter2);
+            printf("The number of iterations using the structure by dynamic method is : %d\n\n", iter2);
+            
+            printf("In question 1 the number of iteration is the sum of (i/2)-1 for i from 2 to n which gives 1/4 * (n^2-3n+2)\n");
+            printf("because the inner loop iterations are (i/2)-1 as worst case (prime number)\n");
+            printf("and the outer loop is from 2 to n (n-1 time) so this number is not totally accurate\n");
+            printf("the complexity is O(n^2)\n\n");
+
+            printf("For the question two (for both static and dynamic) we have :\n\n");
+            printf("  -The number of iteration is the sum of (n-3-(2k+1))/2 for k from 0 to (n-3)/2 which gives 1/8 * (n^2-6n+5)\n");
+            printf("  -That is because the outer loop iterates (n-2)/2 times from 1 to n-2 taking only odd numbers\n");
+            printf("  -and the inner loop iterates (n-3-i)/2 time and i=2k+1 k from 0 to (n-3)/2\n");
+            printf("  -Then the complexity would be O(n^2)\n");
+            printf("if we took in consediration that not all numbers are prime the complexity will be arround O(n^2/log(n))\n\n");
+
+            printf("Note : The mesure of number the iterations and complexity was very aproximative ");
 
             hold_results();
 

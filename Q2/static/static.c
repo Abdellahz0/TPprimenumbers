@@ -25,13 +25,13 @@ void createprime_array(primes **Tab,int size1){
   }
 }
 //  logic deletion to all multiples of prime numbers
-void check_primes(primes* Tab, int size1,int *iter3) {   // complexity is between O(n^2) and O(nlog(n)) and might be closer to O(n^2)
-   for (int i = 1; i < size1-1; i+=2) // number of iterations is (n-1/2)
+void check_primes(primes* Tab, int size1,int *iter3) {   // complexity might be arround O(n^2)
+   for (int i = 1; i < size1-1; i+=2) // number of iterations is ((size1-2)/2)
   {
-    if ((Tab+i+2)->pr) { //the rate of primes in a range [2,n] is aproximetly 1/log(n) no there is (n-1)/log(n) prime number
+    if ((Tab+i+2)->pr) { //the rate of primes in a range [2,n] is aproximetly 1/log(n) so there is (n-1)/log(n) prime number
       for (int j = i+2; j < size1-1; j+=2) //number of iterations depends on wether Tab[i+2] is prime 
-      {                                    //worst case (all primes) : the sum of (size1-3-i)/2 for i from 1 to size1-2
-                                          //and with the aproximation it would be the sum of (size1-3-i)/2 for i from 1 to (size1-1)/log(size1) 
+      {                                    //worst case (all primes) : the sum of (size1-3-(2k+1))/2 for k from 0 to (size1-3)/2
+                                           //which gives 1/8 * (n^2-6n+5) thus the complexity is near O(n^2)
         if ((j+2)%(i+2)==0) { //we compare with j+2 but we update the cell of index j
           (Tab+j)->pr=false;  //because the number in the cell is its index plus two
         }
