@@ -133,9 +133,13 @@ cell* main_menu() { //the menu where the user manipulates the differente questio
     //Q4 must not be executed unless Q2 and Q3 are executed 
     bool decision2=false; //for menu logic Q5 
     //Q5 must not be executed unless Q2 and Q4 are executed
+    bool decision3=false; // for menu logic Q6
+    //Q5 must not be executed unless Q2 and Q4 are executed
+    bool decision4=false;
+    //Q6 must not be executed unless Q1 and Q2 are executed
     int choice = 1;            //the option choosed (set default to one)
     int choice2=1;
-    int max_choice = 5;        //the total number of options
+    int max_choice = 6;        //the total number of options
     char c;                    //the keyboard key pressed by the user
          //loop until the user press ESC
     do
@@ -161,7 +165,7 @@ cell* main_menu() { //the menu where the user manipulates the differente questio
                 if (i == choice)
                 {   
                     //if the option is not accessable display it with red otherwise display it with blue
-                    if (choice<=2 || (choice==3 && decision) || (choice==4 && decision1) || (choice==5 && decision2)) {
+                    if (choice<=2 || (choice==3 && decision) || (choice==4 && decision1) || (choice==5 && decision2) {
                        printf("#\033[34m --> ");
                     } else {
                         printf("#\033[31m --> ");
@@ -185,6 +189,9 @@ cell* main_menu() { //the menu where the user manipulates the differente questio
                       break;
                   case 5:
                       printf("Q5) Find all co-prime numbers%84c\033[0m#\n",32);
+                      break;
+                  case 6:
+                      printf("Q6) number of iterations of Q1 & Q2");
                       break;
                 }
             }
@@ -239,6 +246,9 @@ cell* main_menu() { //the menu where the user manipulates the differente questio
                 break;
             case 53: // '5'
                 choice = 5;
+                break;
+            case 54:
+                choice = 6;
                 break;
             case 13:    // confirm the choice with Enter
                 c = 13;
