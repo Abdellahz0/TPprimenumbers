@@ -260,7 +260,7 @@ cell *main_menu()
                 c = 13;
                 break;
             case 27: // quite the program after pressing ESC
-                choice = 6;
+                choice = max_choice+1;
                 c = 13;
                 break;
             default:
@@ -398,7 +398,7 @@ cell *main_menu()
 
             break;
         }
-    } while (choice != 6);
+    } while (choice != max_choice+1);
 
     // End of Program
     system("cls");
