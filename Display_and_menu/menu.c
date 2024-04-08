@@ -124,7 +124,6 @@ void hold_results()
     getch();
     system("Clr");
 }
-
 cell *main_menu()
 { // the menu where the user manipulates the differente questions in the TP
 
@@ -169,6 +168,7 @@ cell *main_menu()
                     }
                     else
                     {
+
                         printf("#\033[31m --> ");
                     }
                 }
@@ -178,6 +178,7 @@ cell *main_menu()
                 }
                 switch (i)
                 {
+
                 case 1:
                     printf("Q1) Search primes without using any structures%67c\033[0m#\n", 32);
                     break;
