@@ -84,16 +84,17 @@ void printprime_list(cell* head){     // print only prime numbers in the linked 
 
 
 void check_prime(cell *head,int *iter2){ // logic deletion for all numbers that are not prime
-  cell* temp1=next(head);
+  cell* temp1=next(head);                // the complexity might be closer to O(n^2) rather than O(nlog(n))
   cell* temp2;
-  while (temp1!=NULL && next(temp1)!=NULL)
+  while (temp1!=NULL && next(temp1)!=NULL) //number of iterations is (n-1)/2
   {
     temp2=next(next(temp1));
     int value1=value(temp1);
-    if(prime(temp1)){
-      while (temp2!=NULL&& next(temp2)!=NULL)
+    if(prime(temp1)){ //there is aproximetly (n-1)/log(n) prime number in this list
+      while (temp2!=NULL&& next(temp2)!=NULL) //number of iterations is like the static 
+                                              // because temp2 is always under temp1 with 2 iterations
       {
-        if (value(temp2)%value1==0)
+        if (value(temp2)%value1==0) 
         {
           ass_prime(temp2,false);
         }
