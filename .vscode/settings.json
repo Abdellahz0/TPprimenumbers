@@ -3,5 +3,5 @@
         "dynamic.h": "c",
         "stdbool.h": "c",
         "menu.h": "c"
-    }
+    } 
 }
