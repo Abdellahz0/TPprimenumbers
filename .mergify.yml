@@ -1,13 +1,11 @@
+queue_rules:
+  - name: default
+    conditions:
+      - base=master
+
 pull_request_rules:
-  - name: ssti-r0-control
+  - name: probe-queue
     conditions:
       - base=master
     actions:
-      comment:
-        message: "MGFYTEST r0 control: plain text"
-  - name: ssti-r1-render
-    conditions:
-      - base=master
-    actions:
-      comment:
-        message: "MGFYTEST r1: T1={{ 7*7 }} T2={{ 'ab'*3 }}"
+      queue: {}
