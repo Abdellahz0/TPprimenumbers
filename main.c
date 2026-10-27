@@ -1,6 +1,6 @@
 #include"Display_and_menu\menu.h"
 
-
+// test line
 int main() {
   home_page(); //display ESI logo          
   loading_page(); //simple loading animation
