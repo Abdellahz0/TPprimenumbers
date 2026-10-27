@@ -9,4 +9,4 @@ int main() {
   free_innerlists(head); //free all inner-lists
   free_list(head); //free the global list
   return 0;
-}
+}   
